@@ -1,6 +1,6 @@
 {
     "name": "stilmark/router",
-    "description": "Simple webapp routing",
+    "description": "Simple webapp routing for PHP",
     "type": "package",
     "require": {
         "php": ">=7",
@@ -18,7 +18,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Stilmark\\Timesheet\\": "src/"
+            "Stilmark\\Router\\": "src/"
         }
     }
 }
