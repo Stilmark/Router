@@ -1,0 +1,24 @@
+{
+    "name": "stilmark/router",
+    "description": "Simple webapp routing",
+    "type": "package",
+    "require": {
+        "php": ">=7",
+        "stilmark/parse": ">=v0.70",
+        "nikic/fast-route": "^1.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Lund",
+            "email": "clund@stilmark.com",
+            "homepage": "http://stilmark.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Stilmark\\Timesheet\\": "src/"
+        }
+    }
+}
