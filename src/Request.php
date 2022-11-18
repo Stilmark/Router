@@ -1,6 +1,6 @@
 <?php
 
-namespace Stilmark\Parse;
+namespace Stilmark\Router;
 
 class Request
 {
@@ -64,10 +64,10 @@ class Request
         } elseif (in_array($name, self::$globalsVars)) {
             return self::global('_'.strtoupper($name), $arguments);
         } elseif ($name == 'url') {
-            return 'http'.($_SERVER['HTTPS'] == 'on' ? 's':'').'://'.self::host().self::uri();
+            return 'http'.((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's':'').'://'.self::host().self::uri();
         } elseif ($name == 'path') {
             $url = parse_url(self::url());
-            return $url['path'];
+            return $url['path'] ?? false;
         } else {
         	return false;
         }

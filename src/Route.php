@@ -1,6 +1,6 @@
 <?php
 
-namespace Stilmark\Parse;
+namespace Stilmark\Router;
 
 use FastRoute;
 
