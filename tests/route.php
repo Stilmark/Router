@@ -11,7 +11,8 @@ use Stilmark\Router\Request;
 use Stilmark\Router\Route;
 
 $_SERVER['SERVER_NAME'] = 'www.php.net';
-$_SERVER['REQUEST_URI'] = '/api/user/66';
+// $_SERVER['REQUEST_URI'] = '/api/user/66';
+$_SERVER['REQUEST_URI'] = '/about';
 $_SERVER['REQUEST_METHOD'] = 'GET';
 
 $output = Route::dispatch();

@@ -1,9 +1,8 @@
 <?php
 
 return [
-    '/' => 	['GET', 'Test@me'],
-
-    # API
+    '/' => 	['GET', 'Controller@home'],
+    '/about' =>  ['GET', 'Controller@about'],
 
     '/api' => [
         '/users' =>         ['GET', 'Date@current'],
