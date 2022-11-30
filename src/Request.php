@@ -2,6 +2,8 @@
 
 namespace Stilmark\Router;
 
+use Stilmark\Parse\Str;
+
 class Request
 {
 	public static $serverVars = [
@@ -49,6 +51,9 @@ class Request
 
     public static function __callStatic( String $name, Array $arguments)
     {
+
+        $method = Str::set($name);
+
         // Check if arguments are multidimensional
         if (count($arguments) != count($arguments, COUNT_RECURSIVE)) {
             $arguments = current($arguments);
@@ -63,11 +68,18 @@ class Request
 
         } elseif (in_array($name, self::$globalsVars)) {
             return self::global('_'.strtoupper($name), $arguments);
-        } elseif ($name == 'url') {
+        } elseif ($method->equals('url')) {
             return 'http'.((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's':'').'://'.self::host().self::uri();
-        } elseif ($name == 'path') {
+        } elseif ($method->equals('path')) {
             $url = parse_url(self::url());
             return $url['path'] ?? false;
+        } elseif ($method->beginsWith('has') && in_array($method->strip('has')->lower(), self::$globalsVars) ) {
+            foreach($arguments AS $argument) {
+                if (!self::global('_'.$method->strip('has')->upper(), [$argument])) {
+                    return false;
+                }
+            }
+            return true;
         } else {
         	return false;
         }

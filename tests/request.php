@@ -12,4 +12,10 @@ $_SERVER['REQUEST_METHOD'] = 'GET';
 $_SERVER['QUERY_STRING'] = 'foo=bar';
 $GLOBALS['URI_ARGUMENTS'] = ['id' => 66, 'norm' => 'out', 'person' => 'taken'];
 
-echo Dump::json( Request::args(['id', 'person']));
+$_POST = ['email' => 'bob@hund.com', 'password' => 'kincha', 'gender' => 'some'];
+
+// echo Dump::json( Request::url());
+
+echo Dump::json( Request::hasPost(['email', 'password', 'gender']) );
+
+// echo Dump::json( Request::args(['id', 'person']));
